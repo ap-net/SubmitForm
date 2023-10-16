@@ -69,6 +69,7 @@
   text-transform: uppercase;
   border-radius: 4px;
   box-shadow: 0 6px #999;
+  margin-bottom: 5px;
 }
 .submit-button:active {
   background-color: #8b0000;

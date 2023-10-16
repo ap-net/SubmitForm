@@ -1,15 +1,12 @@
-
 import React, { useState } from "react";
 import "./App.css";
 
-
 const App = () => {
-  
   const [formData, setFormData] = useState({
     customers: "",
     specialRequirements: "",
     excludedCustomers: "",
-    prospectPositions: ""
+    prospectPositions: "",
   });
 
   const handleInputChange = (e) => {
@@ -23,9 +20,9 @@ const App = () => {
       const response = await fetch("/api/form", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -38,82 +35,88 @@ const App = () => {
     }
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
-    <div className="wrapper">
-      <div className="box">
-        <h1 className="header">
-          What is your <br /> audience?
-        </h1>
-        <form onSubmit={handleSubmit}>
-          <div className="QuestionContainer">
-            <label className="form-label">Who are your customers?</label>
-            <div style={{ marginTop: 25 }}>
-              <input
-                className="form-input"
-                type="text"
-                name="customers"
-                value={formData.customers}
-                onChange={handleInputChange}
-              />
+      <div className="wrapper">
+        <div className="box">
+          <h1 className="header">
+            What is your <br /> audience?
+          </h1>
+          <form onSubmit={handleSubmit}>
+            <div className="QuestionContainer">
+              <label className="form-label">
+                Who are your customers?
+                <div style={{ marginTop: 25 }}>
+                  <input
+                    className="form-input"
+                    type="text"
+                    name="customers"
+                    value={formData.customers}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </label>
             </div>
-          </div>
 
-          <div className="QuestionContainer">
-            <label className="form-label">
-              Are there any special requirements like technology, location etc.?
-            </label>
-            <div style={{ marginTop: 25 }}>
-              <input
-                className="form-input"
-                type="text"
-                name="specialRequirements"
-                value={formData.specialRequirements}
-                onChange={handleInputChange}
-              />
+            <div className="QuestionContainer">
+              <label className="form-label">
+                Are there any special requirements like technology, location
+                etc.?
+                <div style={{ marginTop: 25 }}>
+                  <input
+                    className="form-input"
+                    type="text"
+                    name="specialRequirements"
+                    value={formData.specialRequirements}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </label>
             </div>
-          </div>
 
-          <div className="QuestionContainer">
-            <label className="form-label">
-              What types of customers should be excluded?
-            </label>
-            <div style={{ marginTop: 25 }}>
-              <input
-                className="form-input"
-                type="text"
-                name="excludedCustomers"
-                value={formData.excludedCustomers}
-                onChange={handleInputChange}
-              />
+            <div className="QuestionContainer">
+              <label className="form-label">
+                What types of customers should be excluded?
+                <div style={{ marginTop: 25 }}>
+                  <input
+                    className="form-input"
+                    type="text"
+                    name="excludedCustomers"
+                    value={formData.excludedCustomers}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </label>
             </div>
-          </div>
 
-          <div className="QuestionContainer">
-            <label className="form-label">
-              What are the positions of your prospects?
-            </label>
-            <div style={{ marginTop: 25 }}>
-              <input
-                className="form-input"
-                type="text"
-                name="prospectPositions"
-                value={formData.prospectPositions}
-                onChange={handleInputChange}
-              />
+            <div className="QuestionContainer">
+              <label className="form-label">
+                What are the positions of your prospects?
+                <div style={{ marginTop: 25 }}>
+                  <input
+                    className="form-input"
+                    type="text"
+                    name="prospectPositions"
+                    value={formData.prospectPositions}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </label>
             </div>
-          </div>
 
-          <div className="ButtonContainer">
-            <button className="submit-button" type="submit">
-              Submit
-            </button>
-
-          </div>
-        </form>
+            <div className="ButtonContainer">
+              <button className="submit-button" type="submit">
+                Submit
+              </button>
+              
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </form>
   );
 };
