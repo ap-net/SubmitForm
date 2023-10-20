@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Confetti from "react-confetti";
 import "./App.css";
 
 const App = () => {
@@ -8,6 +9,9 @@ const App = () => {
     excludedCustomers: "",
     prospectPositions: "",
   });
+
+  const [showConfetti, setShowConfetti] = useState(false);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +31,17 @@ const App = () => {
 
       if (response.ok) {
         console.log("Form data sent successfully!");
+        setFormData({
+          customers: "",
+          specialRequirements: "",
+          excludedCustomers: "",
+          prospectPositions: "",
+        });
+        setShowConfetti(true);
+        // Hide confetti after 3 seconds
+        setTimeout(() => {
+          setShowConfetti(false);
+        }, 4000);
       } else {
         console.error("Form data failed to send.");
       }
@@ -113,6 +128,7 @@ const App = () => {
           </div>
         </form>
       </div>
+      {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />}
     </div>
   );
 };
